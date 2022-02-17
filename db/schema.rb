@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_191934) do
+ActiveRecord::Schema.define(version: 2022_02_17_195805) do
 
   create_table "bookings", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "customer_id", null: false
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 2022_02_17_191934) do
     t.index ["service_id"], name: "index_bookings_on_service_id"
   end
 
+  create_table "bookings_items", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "booking_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_bookings_items_on_booking_id"
+    t.index ["item_id"], name: "index_bookings_items_on_item_id"
+  end
+
   create_table "customers", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "mobile"
@@ -34,6 +44,15 @@ ActiveRecord::Schema.define(version: 2022_02_17_191934) do
     t.text "address"
     t.string "zip_code"
     t.text "remarks"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", charset: "utf8mb3", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.decimal "per_unit", precision: 20, scale: 2
+    t.string "unit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -47,4 +66,6 @@ ActiveRecord::Schema.define(version: 2022_02_17_191934) do
 
   add_foreign_key "bookings", "customers"
   add_foreign_key "bookings", "services"
+  add_foreign_key "bookings_items", "bookings"
+  add_foreign_key "bookings_items", "items"
 end
