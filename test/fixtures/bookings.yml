@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  service: one
+  start_date: 2022-02-18
+  end_date: 2022-02-18
+  start_time: 2022-02-18 00:49:34
+  end_time: 2022-02-18 00:49:34
+  notes: MyText
+  status: 
+
+two:
+  customer: two
+  service: two
+  start_date: 2022-02-18
+  end_date: 2022-02-18
+  start_time: 2022-02-18 00:49:34
+  end_time: 2022-02-18 00:49:34
+  notes: MyText
+  status: 
