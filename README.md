@@ -1,24 +1,14 @@
-# README
+## Installation Guide
+Please follow the following instruction for setup. Make sure you have ruby installed with version 2.5.5.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+```bash
+git clone https://github.com/karnveer1994/bulk-data.git
+cd bulk-data/
+bundle install
+rake db:setup
+```	 
 
-* Ruby version
+## We can handle bulk data by adding proper indexes and key constraints while generating migrations.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## By adding find data by sql we can return multiple associated table record faster for large database.

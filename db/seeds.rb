@@ -25,19 +25,26 @@ Item.find_or_create_by(title: 'Item4', description: 'related items4', unit: 'ml'
 Item.find_or_create_by(title: 'Item5', description: 'related items5', unit: 'l', per_unit: 56.85)
 
 # Seed bookings data
-bookings_data = []
-Customer.all.each do |customer|
-  Service.all.each do |service|
-    bookings_data << { customer_id: customer.id, service_id: service.id, start_date: Date.today, start_time: DateTime.current, status: 1, end_date: Date.today, end_time: (DateTime.current + 8.hours), created_at: Time.current, updated_at: Time.current }
-  end
-end
-Booking.insert_all(bookings_data)
+# bookings_data = []
+# Customer.all.each do |customer|
+#   Service.all.each do |service|
+#     bookings_data << { customer_id: customer.id, service_id: service.id, start_date: Date.today, start_time: DateTime.current, status: 1, end_date: Date.today, end_time: (DateTime.current + 8.hours), created_at: Time.current, updated_at: Time.current }
+#   end
+# end
+# Booking.insert_all(bookings_data)
 
-# Assign items to bookings
-bookings_items = []
-Booking.all.each do |booking|
-  Item.all.each_with_index do |item, index|
-    bookings_items << { item_id: item.id, booking_id: booking.id, quantity: index + 1, created_at: Time.current, updated_at: Time.current }
-  end
+# # Assign items to bookings
+# bookings_items = []
+# Booking.all.each do |booking|
+#   Item.all.each_with_index do |item, index|
+#     bookings_items << { item_id: item.id, booking_id: booking.id, quantity: index + 1, created_at: Time.current, updated_at: Time.current }
+#   end
+# end
+# BookingsItem.insert_all(bookings_items)
+
+services = []
+(0..50000).each do |num|
+  services << { title: "service-bulk-#{num}", description: "Description of service =#{num}", created_at: Time.current, updated_at: Time.current }
 end
-BookingsItem.insert_all(bookings_items)
+
+Service.insert_all(services)
